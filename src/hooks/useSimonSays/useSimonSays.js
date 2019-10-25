@@ -1,22 +1,22 @@
 import { useState, useEffect, useCallback } from 'react'
-import { isEqual } from 'lodash'
+import { isEqual, shuffle } from 'lodash'
 import {
   STATE,
   randomPhrase,
   randomButton,
   GAME_LOSS_TYPE,
-  TIMEOUT
+  TIMEOUT,
+  BUTTONS
 } from '../../constants/constants'
-
 
 export default function useSimonSays() {
   const [gameState, setGameState] = useState(STATE.SETUP)
   const [challengeIndex, setChallengeIndex] = useState(0)
+  const [gameButtons, setGameButtons] = useState(BUTTONS)
 
   const [goalButton, setGoalButton] = useState(randomButton())
   const [simonSays, setSimonSays] = useState(true)
   const [phraseType, setPhraseType] = useState(randomPhrase())
-
   const [lossType, setLossType] = useState('')
 
   const endGame = useCallback(gameLossType => {
@@ -44,6 +44,7 @@ export default function useSimonSays() {
       setPhraseType(newPhrase)
       setGoalButton(newGoalButton)
       setSimonSays(newSimonSays)
+      setGameButtons(shuffle(BUTTONS))
     }
   }, [phraseType, goalButton, simonSays])
 
@@ -99,7 +100,8 @@ export default function useSimonSays() {
         simonSays,
         lossType,
         phraseType,
-        challengeIndex
+        challengeIndex,
+        gameButtons
       }
     }
   )

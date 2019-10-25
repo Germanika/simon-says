@@ -12,8 +12,8 @@ function App() {
     <div className={styles.root}>
       <header className={styles.header}>
         <GameText simonSaysState={simonSaysState} />
-
-        { chunk(BUTTONS, Math.ceil(BUTTONS.length / 3)).map(
+        <div className={simonSaysState.gameState !== 'SETUP' ? styles.thingybob : undefined}>
+        { chunk(simonSaysState.gameButtons, Math.ceil(BUTTONS.length / 3)).map(
             (buttonRow, rowIndex) =>
               <div key={rowIndex}>
                 { buttonRow.map(button =>
@@ -23,6 +23,7 @@ function App() {
               </div>
           )
         }
+        </div>
       </header>
     </div>
   );
