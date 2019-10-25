@@ -10,6 +10,7 @@
   border: none;
   width: 80px;
   height: 80px;
+  tab-index: 0;
 }
 .game-button:hover {
   border: 6px dotted white;

@@ -12,3 +12,23 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+.gameMessage {
+  font-style: italic;
+  font-size: 130%;
+}
+
+.thingybob {
+  animation: flip 8s linear infinite;
+}
+@keyframes flip {
+  25% {
+    transform: rotateY(90deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  75% {
+    transform: rotateY(90deg);
+  }
+}
